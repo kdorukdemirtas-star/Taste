@@ -9,7 +9,14 @@ Taste Engine is an OpenRouter-powered AI Design QA and Auto-Fixer studio for fro
 - Magic Swap to rewrite weak Tailwind classes into polished product UI
 - Before / After comparison for a clear demo story
 - Curated demo presets for needs-work, balanced, and premium CTA states
+- One-click jury demo that runs the full audit-to-fix transformation
 - OpenRouter-only API settings for a focused production deployment path
+
+## Jury Demo Flow
+
+1. Click **Start Jury Demo** in the hero.
+2. Watch Taste Engine load a weak CTA, run the design audit, and open the Taste HUD.
+3. Magic Swap automatically upgrades the Tailwind classes and the live preview becomes premium.
 
 ## Development
 
