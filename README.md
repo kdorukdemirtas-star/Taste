@@ -22,3 +22,14 @@ npm run dev
 ```bash
 npm run build
 ```
+
+## Vercel Deployment
+
+This repository is ready to import directly into Vercel.
+
+- Framework preset: Vite
+- Install command: `npm install`
+- Build command: `npm run build`
+- Output directory: `dist`
+
+The same settings are also defined in `vercel.json`, so Vercel should detect the correct deployment configuration automatically.
