@@ -12,11 +12,11 @@ interface TasteHUDProps {
 }
 
 const labels: Record<keyof TasteMetrics, string> = {
-  contrast: 'Kontrast & Okunabilirlik',
-  spacing: 'Hizalama & Boşluklar',
-  premiumFeel: 'Premium Hissiyat',
-  typography: 'Tipografi',
-  hierarchy: 'Görsel Hiyerarşi',
+  contrast: 'Contrast & Readability',
+  spacing: 'Alignment & Spacing',
+  premiumFeel: 'Premium Feel',
+  typography: 'Typography',
+  hierarchy: 'Visual Hierarchy',
 };
 
 const barColors: Record<keyof TasteMetrics, string> = {
@@ -48,18 +48,18 @@ export default function TasteHUD({ score, summary, findings, metrics, isOpen, on
               </div>
               <p className="mt-2 text-xs leading-relaxed text-zinc-400">{summary}</p>
             </div>
-            <button onClick={onToggle} className="rounded-full p-1.5 text-zinc-500 transition hover:bg-white/10 hover:text-white" aria-label="HUD panelini kapat">
+            <button onClick={onToggle} className="rounded-full p-1.5 text-zinc-500 transition hover:bg-white/10 hover:text-white" aria-label="Close HUD panel">
               <X className="h-4 w-4" />
             </button>
           </div>
 
           <div className="mb-5 flex items-end justify-between">
             <div>
-              <span className="text-[11px] uppercase tracking-widest text-zinc-500">Tasarım Skoru</span>
+              <span className="text-[11px] uppercase tracking-widest text-zinc-500">Design Score</span>
               <div className="score-pop mt-1 text-5xl font-semibold tracking-tighter text-white">{score}%</div>
             </div>
             <div className={`rounded-2xl border px-3 py-2 text-xs font-semibold ${status}`}>
-              {score >= 85 ? 'Premium' : score >= 60 ? 'Riskli' : 'Kritik'}
+              {score >= 85 ? 'Premium' : score >= 60 ? 'At Risk' : 'Critical'}
             </div>
           </div>
 
@@ -78,7 +78,7 @@ export default function TasteHUD({ score, summary, findings, metrics, isOpen, on
           </div>
 
           <div className="mt-5 max-h-64 space-y-3 overflow-auto rounded-2xl border border-white/5 bg-black/30 p-3">
-            <span className="block text-[10px] font-bold uppercase tracking-widest text-zinc-500">Açıklanabilir AI Denetimi</span>
+            <span className="block text-[10px] font-bold uppercase tracking-widest text-zinc-500">Explainable AI Review</span>
             {findings.length > 0 ? (
               findings.map((finding, index) => (
                 <article key={`${finding.title}-${index}`} className="rounded-xl border border-white/5 bg-white/[0.03] p-3">
@@ -87,18 +87,18 @@ export default function TasteHUD({ score, summary, findings, metrics, isOpen, on
                     <span className="rounded-full bg-zinc-800 px-2 py-0.5 text-[10px] uppercase text-zinc-400">{finding.severity}</span>
                   </div>
                   <p className="text-[11px] leading-relaxed text-zinc-400">{finding.reason}</p>
-                  <p className="mt-2 text-[11px] leading-relaxed text-emerald-300">Öneri: {finding.suggestion}</p>
-                  <p className="mt-1 text-[11px] leading-relaxed text-zinc-500">Etki: {finding.impact}</p>
+                  <p className="mt-2 text-[11px] leading-relaxed text-emerald-300">Suggestion: {finding.suggestion}</p>
+                  <p className="mt-1 text-[11px] leading-relaxed text-zinc-500">Impact: {finding.impact}</p>
                 </article>
               ))
             ) : (
-              <p className="text-xs italic text-zinc-400">Harika! Belirgin tasarım hatası bulunamadı.</p>
+              <p className="text-xs italic text-zinc-400">Excellent. No obvious design issues were detected.</p>
             )}
           </div>
 
           {score < 90 && onFix && (
             <button onClick={onFix} className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-white py-3 text-xs font-semibold text-zinc-950 shadow-lg shadow-white/5 transition hover:bg-zinc-200 active:scale-[0.99]">
-              <Wand2 className="h-4 w-4" /> Tasarımı AI ile İyileştir
+              <Wand2 className="h-4 w-4" /> Improve Design with AI
             </button>
           )}
         </section>

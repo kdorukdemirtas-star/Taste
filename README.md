@@ -1,16 +1,17 @@
 # Taste Engine
 
-Taste Engine, frontend gelistiriciler icin AI destekli Design QA ve Auto-Fixer studyosudur. Kod kalitesi icin ESLint ne yapiyorsa, arayuz kalitesi icin Taste Engine benzer bir deneyim sunar: Tailwind tabanli UI kodunu analiz eder, tasarim karnesi uretir ve Magic Swap ile daha premium siniflar onerir.
+Taste Engine is an OpenRouter-powered AI Design QA and Auto-Fixer studio for frontend developers. It works like a design linter for Tailwind UI: paste or upload component code, run an audit, inspect the Taste HUD scorecard, and use Magic Swap to transform rough UI classes into a more premium design system.
 
-## Temel Ozellikler
+## Features
 
-- Gercek zamanli tasarim linting: renk, spacing, tipografi, hiyerarsi ve premium hissiyat metrikleri
-- Taste HUD: glassmorphism rapor paneli ve aciklanabilir tasarim bulgulari
-- Magic Swap: kotu UI classlarini premium Tailwind siniflariyla degistiren otomatik duzeltme
-- Before / After demo: tasarim donusumunu jurinin aninda gorebilecegi karsilastirma
-- LLM provider ayarlari: simulated, Ollama, OpenRouter ve Anthropic secenekleri
+- Real-time design linting for contrast, spacing, typography, hierarchy, and premium feel
+- Taste HUD with glassmorphism styling and explainable AI findings
+- Magic Swap to rewrite weak Tailwind classes into polished product UI
+- Before / After comparison for a clear demo story
+- Curated demo presets for raw, balanced, and premium CTA states
+- OpenRouter-only API settings for a focused production deployment path
 
-## Calistirma
+## Development
 
 ```bash
 npm install
