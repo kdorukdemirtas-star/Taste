@@ -152,7 +152,7 @@ export default function App() {
 
   const handleMagicFix = () => runMagicFix();
 
-  const runJuryDemo = async () => {
+  const runProductDemo = async () => {
     setIsDemoRunning(true);
     const demoCode = demoPresets[0].code;
     setCode(demoCode);
@@ -187,8 +187,8 @@ export default function App() {
                 Taste Engine audits Tailwind UI code like ESLint for design, explains what feels off, then rewrites the component into a polished OpenRouter-powered version in one click.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <button onClick={runJuryDemo} disabled={isDemoRunning} className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-300 px-5 py-3 text-sm font-semibold text-zinc-950 shadow-xl shadow-emerald-950/30 transition hover:bg-emerald-200 disabled:cursor-wait disabled:bg-zinc-700 disabled:text-zinc-400">
-                  <Play className="h-4 w-4" /> {isDemoRunning ? 'Running Jury Demo...' : 'Start Jury Demo'}
+                <button onClick={runProductDemo} disabled={isDemoRunning} className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-300 px-5 py-3 text-sm font-semibold text-zinc-950 shadow-xl shadow-emerald-950/30 transition hover:bg-emerald-200 disabled:cursor-wait disabled:bg-zinc-700 disabled:text-zinc-400">
+                  <Play className="h-4 w-4" /> {isDemoRunning ? 'Running Demo...' : 'See It Run'}
                 </button>
                 <button onClick={() => setShowSettings(true)} className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-zinc-200 transition hover:border-white/25 hover:text-white">
                   <Settings className="h-4 w-4" /> OpenRouter Settings
@@ -231,7 +231,7 @@ export default function App() {
               <span className="text-[10px] font-bold uppercase tracking-[0.28em] text-emerald-300">Demo path</span>
               <h2 className="mt-2 text-xl font-semibold tracking-tight text-white">Choose a component, audit it, then fix it live.</h2>
             </div>
-            <p className="max-w-md text-xs leading-5 text-zinc-500">Use “Needs Work CTA” for the strongest jury moment: the score drops, the HUD explains why, and Magic Swap upgrades the UI immediately.</p>
+            <p className="max-w-md text-xs leading-5 text-zinc-500">Use “Needs Work CTA” to see the full transformation: the score drops, the HUD explains why, and Magic Swap upgrades the UI immediately.</p>
           </div>
           <div aria-label="Demo presets" className="grid gap-4 md:grid-cols-3">
           {demoPresets.map((preset) => (
@@ -299,8 +299,8 @@ export default function App() {
         <section className="rounded-[2rem] border border-emerald-400/15 bg-emerald-400/[0.04] p-5 backdrop-blur-xl">
           <div className="grid gap-4 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.28em] text-emerald-300">30-second pitch</span>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">What judges should see first</h2>
+              <span className="text-[10px] font-bold uppercase tracking-[0.28em] text-emerald-300">Workflow overview</span>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">How the product works</h2>
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
               <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
@@ -313,7 +313,7 @@ export default function App() {
               </div>
               <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
                 <div className="text-xs font-semibold text-white">3. Magic Swap fixes it</div>
-                <p className="mt-2 text-xs leading-5 text-zinc-400">The preview turns premium in front of the jury.</p>
+                <p className="mt-2 text-xs leading-5 text-zinc-400">The preview turns into a premium interface instantly.</p>
               </div>
             </div>
           </div>
@@ -328,7 +328,7 @@ export default function App() {
           <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl">
             <Bot className="h-5 w-5 text-indigo-300" />
             <h3 className="mt-4 text-sm font-semibold text-white">OpenRouter focused</h3>
-            <p className="mt-2 text-xs leading-5 text-zinc-400">A single production AI path keeps setup simple for demos, judges, and deployment.</p>
+            <p className="mt-2 text-xs leading-5 text-zinc-400">A single production AI path keeps setup simple for demos, teams, and deployment.</p>
           </div>
           <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl">
             <Wand2 className="h-5 w-5 text-purple-300" />
@@ -340,7 +340,7 @@ export default function App() {
         <section className="grid gap-6 lg:grid-cols-2">
           <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl">
             <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-white">
-              <GitCompare className="h-4 w-4 text-amber-300" /> Before / After Demo
+              <GitCompare className="h-4 w-4 text-amber-300" /> Before / After
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl border border-pink-500/15 bg-pink-500/5 p-4">
