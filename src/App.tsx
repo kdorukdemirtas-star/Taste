@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Bot, Code2, Eye, FileUp, GitCompare, KeyRound, Play, Settings, ShieldCheck, Sparkles, Wand2, Zap } from 'lucide-react';
+import { Bot, Code2, Eye, FileUp, GitCompare, KeyRound, Play, Settings, ShieldCheck, Sparkles, Wand2 } from 'lucide-react';
 import TasteHUD from './components/TasteHUD';
 import { analyzeTaste, type TasteReport } from './lib/analyzer';
 import { createMagicSwap } from './lib/magicSwap';
@@ -153,6 +153,7 @@ export default function App() {
   const handleMagicFix = () => runMagicFix();
 
   const runProductDemo = async () => {
+    if (isDemoRunning) return;
     setIsDemoRunning(true);
     const demoCode = demoPresets[0].code;
     setCode(demoCode);
@@ -187,10 +188,10 @@ export default function App() {
                 Taste Engine audits Tailwind UI code like ESLint for design, explains what feels off, then rewrites the component into a polished OpenRouter-powered version in one click.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <button onClick={runProductDemo} disabled={isDemoRunning} className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-300 px-5 py-3 text-sm font-semibold text-zinc-950 shadow-xl shadow-emerald-950/30 transition hover:bg-emerald-200 disabled:cursor-wait disabled:bg-zinc-700 disabled:text-zinc-400">
+                <button type="button" onClick={runProductDemo} disabled={isDemoRunning} className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-300 px-5 py-3 text-sm font-semibold text-zinc-950 shadow-xl shadow-emerald-950/30 transition hover:bg-emerald-200 disabled:cursor-wait disabled:bg-zinc-700 disabled:text-zinc-400">
                   <Play className="h-4 w-4" /> {isDemoRunning ? 'Running Demo...' : 'See It Run'}
                 </button>
-                <button onClick={() => setShowSettings(true)} className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-zinc-200 transition hover:border-white/25 hover:text-white">
+                <button type="button" onClick={() => setShowSettings(true)} className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-zinc-200 transition hover:border-white/25 hover:text-white">
                   <Settings className="h-4 w-4" /> OpenRouter Settings
                 </button>
               </div>
@@ -236,6 +237,7 @@ export default function App() {
           <div aria-label="Demo presets" className="grid gap-4 md:grid-cols-3">
           {demoPresets.map((preset) => (
             <button
+              type="button"
               key={preset.id}
               onClick={() => applyPreset(preset)}
               className={`group rounded-3xl border p-4 text-left transition hover:-translate-y-0.5 hover:border-emerald-400/40 ${
@@ -267,10 +269,10 @@ export default function App() {
             <textarea value={code} onChange={(event) => setCode(event.target.value)} className="h-80 w-full resize-none rounded-2xl border border-white/10 bg-[#050507]/80 p-4 font-mono text-xs leading-6 text-zinc-300 shadow-inner shadow-black/40 outline-none transition focus:border-emerald-500/40" spellCheck={false} />
 
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <button onClick={triggerAIAnalysis} disabled={isAnalyzing} className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 text-xs font-semibold text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:bg-zinc-800 disabled:text-zinc-500">
+              <button type="button" onClick={triggerAIAnalysis} disabled={isAnalyzing} className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 text-xs font-semibold text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:bg-zinc-800 disabled:text-zinc-500">
                 <Bot className="h-4 w-4" /> {isAnalyzing ? 'Auditing Design...' : 'Run Design Audit'}
               </button>
-              <button onClick={handleMagicFix} className="inline-flex items-center justify-center gap-2 rounded-2xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3 text-xs font-semibold text-emerald-200 transition hover:bg-emerald-500/20">
+              <button type="button" onClick={handleMagicFix} className="inline-flex items-center justify-center gap-2 rounded-2xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3 text-xs font-semibold text-emerald-200 transition hover:bg-emerald-500/20">
                 <Wand2 className="h-4 w-4" /> Magic Swap
               </button>
             </div>
@@ -289,7 +291,7 @@ export default function App() {
               </div>
               <div className="relative flex min-h-[260px] items-center justify-center bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.16),transparent_42%)] p-8">
                 <div className="absolute inset-6 rounded-3xl border border-dashed border-white/10" />
-                <button className={currentPreview.className}>{currentPreview.label}</button>
+                <button type="button" className={currentPreview.className}>{currentPreview.label}</button>
               </div>
             </div>
             <p className="mt-3 text-center text-[11px] text-zinc-500">The preview reads the button className and label directly from the code editor.</p>
@@ -346,13 +348,13 @@ export default function App() {
               <div className="rounded-2xl border border-pink-500/15 bg-pink-500/5 p-4">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-pink-300">Before</span>
                 <div className="mt-4 flex min-h-28 items-center justify-center rounded-xl bg-black/25 p-4">
-                  <button className={beforePreview.className}>{beforePreview.label}</button>
+                  <button type="button" className={beforePreview.className}>{beforePreview.label}</button>
                 </div>
               </div>
               <div className="rounded-2xl border border-emerald-500/15 bg-emerald-500/5 p-4">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-300">After</span>
                 <div className="mt-4 flex min-h-28 items-center justify-center rounded-xl bg-black/25 p-4">
-                  <button className={currentPreview.className}>{currentPreview.label}</button>
+                  <button type="button" className={currentPreview.className}>{currentPreview.label}</button>
                 </div>
               </div>
             </div>
@@ -376,11 +378,11 @@ export default function App() {
       <TasteHUD score={report.score} summary={report.summary} findings={report.findings} metrics={report.metrics} isOpen={hudOpen} onToggle={() => setHudOpen((value) => !value)} onFix={handleMagicFix} />
 
       {showSettings && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/65 p-4 backdrop-blur-md">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/65 p-4 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="openrouter-settings-title">
           <section className="w-full max-w-md rounded-3xl border border-white/10 bg-zinc-950 p-6 shadow-2xl shadow-black/50">
             <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-4">
-              <h2 className="text-sm font-semibold text-white">OpenRouter API Settings</h2>
-              <button onClick={() => setShowSettings(false)} className="text-xs text-zinc-400 transition hover:text-white">Close</button>
+              <h2 id="openrouter-settings-title" className="text-sm font-semibold text-white">OpenRouter API Settings</h2>
+              <button type="button" onClick={() => setShowSettings(false)} className="text-xs text-zinc-400 transition hover:text-white">Close</button>
             </div>
 
             <div className="mb-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-3 text-xs leading-5 text-emerald-100">
@@ -391,7 +393,7 @@ export default function App() {
             <div className="space-y-4 text-xs">
               <label className="block">
                 <span className="mb-1.5 block text-zinc-400">API Key</span>
-                <input type="password" value={config.apiKey} placeholder="sk-or-v1-..." onChange={(event) => setConfig({ ...config, apiKey: event.target.value })} className="w-full rounded-xl border border-white/10 bg-black/30 p-3 text-zinc-200 outline-none" />
+                <input autoComplete="off" type="password" value={config.apiKey} placeholder="sk-or-v1-..." onChange={(event) => setConfig({ ...config, apiKey: event.target.value })} className="w-full rounded-xl border border-white/10 bg-black/30 p-3 text-zinc-200 outline-none" />
               </label>
               <label className="block">
                 <span className="mb-1.5 block text-zinc-400">Base URL</span>
@@ -403,7 +405,7 @@ export default function App() {
               </label>
             </div>
 
-            <button onClick={() => setShowSettings(false)} className="mt-6 w-full rounded-2xl bg-emerald-400 py-3 text-xs font-semibold text-zinc-950 transition hover:bg-emerald-300">Save Configuration</button>
+            <button type="button" onClick={() => setShowSettings(false)} className="mt-6 w-full rounded-2xl bg-emerald-400 py-3 text-xs font-semibold text-zinc-950 transition hover:bg-emerald-300">Save Configuration</button>
           </section>
         </div>
       )}

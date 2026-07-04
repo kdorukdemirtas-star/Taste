@@ -48,7 +48,7 @@ export default function TasteHUD({ score, summary, findings, metrics, isOpen, on
               </div>
               <p className="mt-2 text-xs leading-relaxed text-zinc-400">{summary}</p>
             </div>
-            <button onClick={onToggle} className="rounded-full p-1.5 text-zinc-500 transition hover:bg-white/10 hover:text-white" aria-label="Close HUD panel">
+            <button type="button" onClick={onToggle} className="rounded-full p-1.5 text-zinc-500 transition hover:bg-white/10 hover:text-white" aria-label="Close HUD panel">
               <X className="h-4 w-4" />
             </button>
           </div>
@@ -97,14 +97,14 @@ export default function TasteHUD({ score, summary, findings, metrics, isOpen, on
           </div>
 
           {score < 90 && onFix && (
-            <button onClick={onFix} className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-white py-3 text-xs font-semibold text-zinc-950 shadow-lg shadow-white/5 transition hover:bg-zinc-200 active:scale-[0.99]">
+            <button type="button" onClick={onFix} className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-white py-3 text-xs font-semibold text-zinc-950 shadow-lg shadow-white/5 transition hover:bg-zinc-200 active:scale-[0.99]">
               <Wand2 className="h-4 w-4" /> Improve Design with AI
             </button>
           )}
         </section>
       )}
 
-      <button onClick={onToggle} className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-xs font-semibold tracking-wide shadow-xl backdrop-blur-md transition hover:scale-105 active:scale-95 ${status}`}>
+      <button type="button" onClick={onToggle} className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-xs font-semibold tracking-wide shadow-xl backdrop-blur-md transition hover:scale-105 active:scale-95 ${status}`}>
         <span className={`h-2 w-2 animate-pulse rounded-full ${dot}`} />
         TASTE ENGINE {score}%
       </button>
