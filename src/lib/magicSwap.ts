@@ -9,11 +9,11 @@ export function createMagicSwap(code: string): MagicSwapResult {
 </button>`;
 
   const changes = [
-    'bg-yellow-400 yerine koyu premium yüzey için bg-zinc-900 kullanıldı.',
-    'Dar px-4 py-2 spacing, daha rahat px-6 py-3 touch target ile değiştirildi.',
-    'rounded yerine rounded-xl, shadow-lg yerine shadow-black/40 ile kontrollü derinlik verildi.',
-    'hover, active ve duration sınıfları eklenerek mikro etkileşim güçlendirildi.',
-    'font-medium text-sm tracking-wide ile CTA tipografisi netleştirildi.',
+    'Replaced bg-yellow-400 with bg-zinc-900 for a more premium dark surface.',
+    'Expanded tight px-4 py-2 spacing into a more comfortable px-6 py-3 target area.',
+    'Upgraded rounded and shadow-lg into rounded-xl with a restrained shadow-black/40 depth system.',
+    'Added hover, active, and duration classes to make the button feel interactive.',
+    'Added font-medium text-sm tracking-wide to give the CTA stronger typographic intent.',
   ];
 
   if (code.includes('<button')) {
@@ -23,8 +23,8 @@ export function createMagicSwap(code: string): MagicSwapResult {
   return {
     code: `${code}
 
-{/* Taste Engine premium CTA önerisi */}
+{/* Taste Engine premium CTA recommendation */}
 ${improvedButton}`,
-    changes: ['Mevcut koda premium CTA önerisi eklendi.', ...changes],
+    changes: ['Added a premium CTA recommendation to the existing code.', ...changes],
   };
 }

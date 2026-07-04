@@ -25,7 +25,7 @@ export interface TasteReport {
 const clamp = (value: number) => Math.max(0, Math.min(100, Math.round(value)));
 const hasAny = (code: string, tokens: string[]) => tokens.some((token) => code.includes(token));
 
-export function analyzeTaste(code: string, provider: string): TasteReport {
+export function analyzeTaste(code: string, provider = 'OpenRouter'): TasteReport {
   const findings: TasteFinding[] = [];
   const normalized = code.toLowerCase();
   const metrics: TasteMetrics = {
@@ -41,10 +41,10 @@ export function analyzeTaste(code: string, provider: string): TasteReport {
     metrics.premiumFeel -= 34;
     findings.push({
       category: 'premiumFeel',
-      title: 'Ham ve fazla doygun vurgu rengi',
-      reason: 'Parlak sarı/turuncu tonları koyu premium yüzeylerde ucuz alarm hissi oluşturur.',
-      suggestion: 'Daha kontrollü zinc, emerald veya indigo tonlarını border ve subtle shadow ile kullan.',
-      impact: 'Görsel kalite yükselir, ürün daha sofistike görünür.',
+      title: 'Over-saturated accent color',
+      reason: 'Bright yellow or orange surfaces can feel noisy and cheap inside a dark premium interface.',
+      suggestion: 'Use controlled zinc, emerald, or indigo surfaces with a subtle border and shadow system.',
+      impact: 'The component feels calmer, more expensive, and more intentional.',
       severity: 'high',
     });
   }
@@ -53,10 +53,10 @@ export function analyzeTaste(code: string, provider: string): TasteReport {
     metrics.contrast -= 18;
     findings.push({
       category: 'contrast',
-      title: 'Kontrast bağlamı kontrolsüz',
-      reason: 'Sert siyah/beyaz metin parlak arka planla birleşince göz yorar ve temaya yabancılaşır.',
-      suggestion: 'Metin rengini yüzey paletine yaklaştır; örneğin text-zinc-100 veya text-zinc-950 kontrollü kullanılmalı.',
-      impact: 'Okunabilirlik ve erişilebilirlik algısı güçlenir.',
+      title: 'Contrast context is too harsh',
+      reason: 'Pure black or white text on a saturated background often creates eye strain and weakens theme consistency.',
+      suggestion: 'Move the text color closer to the surface palette, such as text-zinc-100 or a controlled dark neutral.',
+      impact: 'Readability improves while the visual system feels more coherent.',
       severity: 'medium',
     });
   }
@@ -65,10 +65,10 @@ export function analyzeTaste(code: string, provider: string): TasteReport {
     metrics.spacing -= 24;
     findings.push({
       category: 'spacing',
-      title: 'Buton nefes alanına ihtiyaç duyuyor',
-      reason: 'Dar padding değerleri bileşeni demo/prototip seviyesinde bırakır.',
-      suggestion: 'Ana aksiyonlar için px-6 py-3 civarında daha rahat bir touch target kullan.',
-      impact: 'Tıklanabilirlik ve modern ürün hissi artar.',
+      title: 'The call-to-action needs more breathing room',
+      reason: 'Tight padding makes the component feel like a prototype instead of a polished product control.',
+      suggestion: 'Use a more comfortable target area around px-6 py-3 for primary actions.',
+      impact: 'The button becomes easier to scan, click, and trust.',
       severity: 'medium',
     });
   }
@@ -78,10 +78,10 @@ export function analyzeTaste(code: string, provider: string): TasteReport {
     metrics.hierarchy -= 8;
     findings.push({
       category: 'premiumFeel',
-      title: 'Köşe yarıçapı modern sistemle uyumsuz',
-      reason: 'Sadece rounded kullanımı güncel dashboard ve SaaS bileşenlerinde zayıf kalır.',
-      suggestion: 'rounded-xl veya rounded-2xl ile daha bilinçli bir yüzey dili kur.',
-      impact: 'Bileşen daha güncel ve sistematik görünür.',
+      title: 'Corner radius feels under-designed',
+      reason: 'A generic rounded class can look unfinished in modern SaaS and dashboard interfaces.',
+      suggestion: 'Use rounded-xl or rounded-2xl to create a more deliberate surface language.',
+      impact: 'The component reads as part of a modern design system.',
       severity: 'low',
     });
   }
@@ -91,10 +91,10 @@ export function analyzeTaste(code: string, provider: string): TasteReport {
     metrics.premiumFeel -= 14;
     findings.push({
       category: 'hierarchy',
-      title: 'Mikro etkileşim eksik',
-      reason: 'Hover ve transition yoksa kullanıcı bileşenin canlı bir sistem parçası olduğunu hissetmez.',
-      suggestion: 'hover, active ve duration sınıflarıyla etkileşimi görünür kıl.',
-      impact: 'Arayüz daha dokunsal ve premium hissedilir.',
+      title: 'Missing micro-interaction states',
+      reason: 'Without hover, active, and transition states, the UI feels static instead of responsive.',
+      suggestion: 'Add hover, active, and duration classes to make the action feel tactile.',
+      impact: 'The interface feels more alive and product-grade.',
       severity: 'medium',
     });
   }
@@ -103,10 +103,10 @@ export function analyzeTaste(code: string, provider: string): TasteReport {
     metrics.typography -= 18;
     findings.push({
       category: 'typography',
-      title: 'Tipografik niyet belirsiz',
-      reason: 'Font ağırlığı ve boyut net değilse CTA hiyerarşisi zayıflar.',
-      suggestion: 'font-medium text-sm ve gerektiğinde tracking-wide kullan.',
-      impact: 'Metin daha kasıtlı ve ürün standardına yakın görünür.',
+      title: 'Typography lacks clear intent',
+      reason: 'Without a clear size and weight, the CTA hierarchy becomes less confident.',
+      suggestion: 'Use font-medium, text-sm, and tracking-wide when the button needs a premium CTA feel.',
+      impact: 'The label becomes more deliberate and easier to recognize as a primary action.',
       severity: 'medium',
     });
   }
@@ -116,10 +116,10 @@ export function analyzeTaste(code: string, provider: string): TasteReport {
     metrics.premiumFeel -= 12;
     findings.push({
       category: 'hierarchy',
-      title: 'Katman derinliği zayıf',
-      reason: 'Premium koyu temalarda yüzeyi ayırmak için border, ring veya kontrollü gölge gerekir.',
-      suggestion: 'border-white/10 ve shadow-black/40 gibi düşük opaklıklı derinlik kullan.',
-      impact: 'Bileşen arka plandan ayrılır ve daha pahalı görünür.',
+      title: 'Surface depth is too flat',
+      reason: 'Premium dark UI needs subtle separation through borders, rings, or controlled shadows.',
+      suggestion: 'Use classes like border-white/10 and shadow-black/40 to create restrained depth.',
+      impact: 'The component separates from the background and feels more refined.',
       severity: 'low',
     });
   }
@@ -142,7 +142,7 @@ export function analyzeTaste(code: string, provider: string): TasteReport {
     findings,
     summary:
       findings.length > 0
-        ? `${provider.toUpperCase()} destekli Taste Engine ${findings.length} tasarım riski buldu.`
-        : `${provider.toUpperCase()} destekli Taste Engine belirgin risk bulmadı; bileşen premium standarda yakın.`,
+        ? `${provider} analysis found ${findings.length} design risk${findings.length === 1 ? '' : 's'}.`
+        : `${provider} analysis found no obvious risks. This component is close to premium standard.`,
   };
 }

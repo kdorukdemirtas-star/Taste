@@ -28,7 +28,7 @@
   "version": "1.0.0",
   "name": "taste-engine",
   "type": "module",
-  "description": "AI Design QA and Auto-Fixer studio for frontend interfaces.",
+  "description": "OpenRouter-powered AI Design QA and Auto-Fixer studio for frontend interfaces.",
   "engines": {
     "node": ">=20"
   }
