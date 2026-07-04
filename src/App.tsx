@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Bot, Code2, Eye, FileUp, GitCompare, KeyRound, Settings, Sparkles, Wand2 } from 'lucide-react';
+import { Bot, Code2, Eye, FileUp, GitCompare, KeyRound, Settings, ShieldCheck, Sparkles, Wand2 } from 'lucide-react';
 import TasteHUD from './components/TasteHUD';
 import { analyzeTaste, type TasteReport } from './lib/analyzer';
 import { createMagicSwap } from './lib/magicSwap';
@@ -19,11 +19,11 @@ interface DemoPreset {
 
 const demoPresets: DemoPreset[] = [
   {
-    id: 'raw',
-    label: 'Raw CTA',
-    description: 'Intentionally harsh colors and cramped spacing for a dramatic audit.',
-    code: `<button className="bg-yellow-400 text-black px-4 py-2 rounded shadow-lg">
-  Click Me!
+    id: 'needs-work',
+    label: 'Needs Work CTA',
+    description: 'A realistic early-stage button with weak spacing, shallow depth, and limited interaction.',
+    code: `<button className="bg-slate-700 text-white px-4 py-2 rounded shadow">
+  Launch App
 </button>`,
   },
   {
@@ -158,19 +158,33 @@ export default function App() {
         <header className="flex flex-col gap-5 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.28em] text-emerald-300">
-              <Sparkles className="h-3.5 w-3.5" /> Taste Engine v1.1
+              <Sparkles className="h-3.5 w-3.5" /> Taste Engine
             </span>
-            <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white md:text-5xl">AI Design QA & Auto-Fixer Studio</h1>
+            <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white md:text-5xl">Production-Grade AI Design QA</h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-400">
               Taste Engine audits Tailwind UI code like a design linter, scores the interface in real time, and uses OpenRouter-powered Magic Swap to turn rough components into polished product UI.
             </p>
+            <div className="mt-5 grid max-w-xl grid-cols-3 gap-3">
+              <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
+                <div className="text-lg font-semibold text-white">5</div>
+                <div className="text-[10px] uppercase tracking-widest text-zinc-500">Metrics</div>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
+                <div className="text-lg font-semibold text-white">1-click</div>
+                <div className="text-[10px] uppercase tracking-widest text-zinc-500">Auto Fix</div>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
+                <div className="text-lg font-semibold text-white">Vercel</div>
+                <div className="text-[10px] uppercase tracking-widest text-zinc-500">Ready</div>
+              </div>
+            </div>
           </div>
           <button onClick={() => setShowSettings(true)} className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-zinc-900 px-4 py-3 text-xs font-semibold text-zinc-200 transition hover:border-white/25 hover:text-white">
             <Settings className="h-4 w-4" /> OpenRouter Settings
           </button>
         </header>
 
-        <section className="grid gap-4 md:grid-cols-3">
+        <section aria-label="Demo presets" className="grid gap-4 md:grid-cols-3">
           {demoPresets.map((preset) => (
             <button
               key={preset.id}
@@ -217,6 +231,24 @@ export default function App() {
               <button className={currentPreview.className}>{currentPreview.label}</button>
             </div>
             <p className="mt-3 text-center text-[11px] text-zinc-500">The preview reads the button className and label directly from the code editor.</p>
+          </div>
+        </section>
+
+        <section className="grid gap-4 md:grid-cols-3">
+          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl">
+            <ShieldCheck className="h-5 w-5 text-emerald-300" />
+            <h3 className="mt-4 text-sm font-semibold text-white">Private by default</h3>
+            <p className="mt-2 text-xs leading-5 text-zinc-400">API settings stay in local storage and the instant rule engine works without sending code anywhere.</p>
+          </div>
+          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl">
+            <Bot className="h-5 w-5 text-indigo-300" />
+            <h3 className="mt-4 text-sm font-semibold text-white">OpenRouter focused</h3>
+            <p className="mt-2 text-xs leading-5 text-zinc-400">A single production AI path keeps setup simple for demos, judges, and deployment.</p>
+          </div>
+          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl">
+            <Wand2 className="h-5 w-5 text-purple-300" />
+            <h3 className="mt-4 text-sm font-semibold text-white">Explainable fixes</h3>
+            <p className="mt-2 text-xs leading-5 text-zinc-400">Every Magic Swap lists the design decisions behind the Tailwind class changes.</p>
           </div>
         </section>
 

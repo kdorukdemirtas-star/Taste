@@ -8,7 +8,7 @@ Taste Engine is an OpenRouter-powered AI Design QA and Auto-Fixer studio for fro
 - Taste HUD with glassmorphism styling and explainable AI findings
 - Magic Swap to rewrite weak Tailwind classes into polished product UI
 - Before / After comparison for a clear demo story
-- Curated demo presets for raw, balanced, and premium CTA states
+- Curated demo presets for needs-work, balanced, and premium CTA states
 - OpenRouter-only API settings for a focused production deployment path
 
 ## Development
